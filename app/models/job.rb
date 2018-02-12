@@ -1,3 +1,3 @@
-class Job
+class Job 
 
 end
