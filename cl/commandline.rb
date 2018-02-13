@@ -27,37 +27,30 @@ require "pry"
     #Lists the available locations and accepts a number answer (hopefully works for
     #locations that are listed as double digit numbers)
     puts "Here is a list of destinations with openings..."
-    locations_list
+    puts locations_list
     puts "Please enter the number of the location you would like to work at"
     number = gets.chomp.to_i
-    locations_list.each do |location|
-      if number < 10
-        if location[0].to_i == number
-          "#Looking in {location}..."
-          jobs(location)
-        elsif location[0..1].to_i == number
-          location
-          jobs(location)
+    locations_list.each do |id, location|
+      if id == number
+        puts "Looking in #{location}..."
+        jobs(number).each do |job|
+          puts job.name
         end
+      elsif number > locations_list.size || number <= 0
+        puts "Invalid command. Please try again"
+        whereabouts
       end
     end
   end
 
   def locations_list
-    #lists out all unique locations
-    Adapter.api_call.each do |jobs_hash|
-      locations = jobs_hash.select do |key, value|
-        key["location"].uniq
-      end
+    #lists out all unique locations, numbered
+    numbered_locations = {}
+
+    Location.all.each do |location|
+      numbered_locations[location.id] = location.name
     end
-
-    counter = 0
-
-    while counter < locations.length
-      puts "#{counter}: #{locations[counter]}"
-      counter += 1
-    end
-
+    numbered_locations
   end
 
 
@@ -72,13 +65,10 @@ require "pry"
   end
 
 
-  def jobs(location)
+  def jobs(loca_id)
     #lists all jobs in a certain location
-    Adapter.api_call.each do |jobs_hash|
-      jobs_hash.select do |key, value|
-        if key["location"].downcase == location.downcase
-          key["title"]
-        end
-      end
+    Job.all.select do |job|
+      job.location_id == loca_id
+
     end
   end
