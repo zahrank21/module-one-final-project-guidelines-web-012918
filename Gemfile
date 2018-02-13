@@ -7,8 +7,5 @@ gem "pry"
 gem "require_all"
 gem "rest-client"
 gem "json"
-<<<<<<< HEAD
 gem "rake"
-=======
 gem "bundler"
->>>>>>> chris
