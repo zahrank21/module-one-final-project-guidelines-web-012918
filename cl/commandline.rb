@@ -18,7 +18,7 @@ require "pry"
     answer = gets.chomp.downcase
     if answer == "y" || answer == "yes"
       puts "1. Location or 2. Company? (1 or 2)"
-      number_answer = gets.chomp
+      number_answer = gets.chomp.to_i
       if number_answer == 1
         whereabouts
       elsif number_answer == 2
@@ -62,17 +62,9 @@ require "pry"
     Location.all.each do |location|
       numbered_locations[location.id] = location.name
     end
-<<<<<<< HEAD
-    numbered_locations.each do |key, value|
-      puts "#{key}: #{value}"
-    end
-    puts "Done"
-=======
-    # numbered_locations.each do |key, value|
-    #   puts "#{key}: #{value}"
-    # end
+
     return numbered_locations
->>>>>>> zahran
+
   end
 
 
@@ -97,5 +89,3 @@ require "pry"
       puts "Position available : #{job.name}"
     end
   end
-
-  def
