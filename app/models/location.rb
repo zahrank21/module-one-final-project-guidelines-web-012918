@@ -10,4 +10,10 @@ class Location < ActiveRecord::Base
     end
   end
 
+  def self.get_location_id(location)
+    me = all.find do |loca|
+      loca.name == location
+    end.id
+  end
+
 end

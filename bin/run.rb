@@ -9,7 +9,10 @@ require_relative '../db/migrate/003_create_companies_table.rb'
 require_relative '../db/migrate/004_insert_name_column_into_jobs.rb'
 
 
-Adapter.api_call
+# Adapter.api_call
+
+Company.create_table
+Location.create_table
 
 binding.pry
 

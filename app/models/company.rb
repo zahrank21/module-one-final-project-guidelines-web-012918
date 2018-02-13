@@ -11,4 +11,10 @@ class Company < ActiveRecord::Base
     end
   end
 
+  def self.get_company_id(company)
+    me = all.find do |comp|
+      comp.name == company
+    end.id
+  end
+
 end
