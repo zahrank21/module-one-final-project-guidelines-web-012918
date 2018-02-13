@@ -4,7 +4,7 @@ class Job < ActiveRecord::Base
 
   def self.create_table
     Adapter.api_call.each do |job_hash|
-      Job.create(name: job_hash["title"], company_id: Company.get_company_id(job_hash["company"]), location_id: Location.get_location_id(job_hash["location"]))
+      Job.create(name: job_hash["title"], company_id: Company.get_company_id(job_hash["company"]), location_id: Location.get_location_id(job_hash["location"]), description: job_hash["description"])
     end
   end
 
