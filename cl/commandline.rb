@@ -113,6 +113,6 @@ require "pry"
     end
 
     jobs_in_location.each do |job|
-      puts "Position available : #{job.name}"
+      puts "Position available : #{job.name} at location #{locations_list[job.location_id]}"
     end
   end
