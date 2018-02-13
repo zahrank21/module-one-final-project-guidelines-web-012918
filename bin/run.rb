@@ -15,4 +15,11 @@ require_relative '../cl/commandline.rb'
 # Location.create_table
 # Job.create_table
 
+<<<<<<< HEAD
+=======
+# binding.pry
+
+"hi"
+
+>>>>>>> zahran
 greeting
