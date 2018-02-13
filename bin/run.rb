@@ -15,6 +15,8 @@ require_relative '../cl/commandline.rb'
 # Location.create_table
 # Job.create_table
 
-binding.pry
+# binding.pry
 
 "hi"
+
+greeting

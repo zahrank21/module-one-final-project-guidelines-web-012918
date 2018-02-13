@@ -34,9 +34,7 @@ require "pry"
     locations_list.each do |id, location|
       if id == number
         puts "Looking in #{location}..."
-        jobs(number).each do |job|
-          puts job.name
-        end
+        jobs(number)
       elsif number > locations_list.size || number <= 0
         puts "Invalid command. Please try again"
         whereabouts
@@ -51,9 +49,10 @@ require "pry"
     Location.all.each do |location|
       numbered_locations[location.id] = location.name
     end
-    numbered_locations.each do |key, value|
-      puts "#{key}: #{value}"
-    end
+    # numbered_locations.each do |key, value|
+    #   puts "#{key}: #{value}"
+    # end
+    return numbered_locations
   end
 
 
@@ -70,8 +69,11 @@ require "pry"
 
   def jobs(loca_id)
     #lists all jobs in a certain location
-    Job.all.select do |job|
+    jobs_in_location = Job.all.select do |job|
       job.location_id == loca_id
+    end
 
+    jobs_in_location.each do |job|
+      puts "Position available : #{job.name}"
     end
   end
