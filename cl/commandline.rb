@@ -25,6 +25,7 @@ require "pry"
         employer
       else
         puts "Choose 1 or 2 next time."
+        greeting
       end
     else
       puts "Come back later, you bum!"
@@ -43,11 +44,22 @@ require "pry"
         jobs(number).each do |job|
           puts job.name
         end
-      elsif number > locations_list.size || number <= 0
+      elsif number > companies_list.size || number <= 0
         puts "Invalid command. Please try again"
-        whereabouts
+        employer
       end
     end
+  end
+
+  def companies_list
+    numbered_companies = {}
+
+    Company.all.each do |company|
+      numbered_companies[company.id] = company.name
+    end
+
+    numbered_companies
+
   end
 
 
