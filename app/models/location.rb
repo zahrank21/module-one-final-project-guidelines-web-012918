@@ -4,7 +4,7 @@ class Location < ActiveRecord::Base
 
   def self.create_table
     Adapter.api_call.each do |job_hash|
-      if Location.find_by(name: job_hash["location"])
+      if Location.find_by(name: job_hash["location"]) == nil
         Location.create(name: job_hash["location"])
       end
     end
