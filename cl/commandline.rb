@@ -41,12 +41,9 @@ require "pry"
     companies_list.each do |id, company|
       if id == number
         puts "Looking in #{company}..."
-        company_jobs(number).each do |job|
-          puts job.name
-        end
+        company_jobs(number)
       elsif number > companies_list.size || number <= 0
         puts "Invalid command. Please try again"
-        employer
       end
     end
   end
@@ -74,10 +71,9 @@ require "pry"
     locations_list.each do |id, location|
       if id == number
         puts "Looking in #{location}..."
-        jobs(number)
+        location_jobs(number)
       elsif number > locations_list.size || number <= 0
         puts "Invalid command. Please try again"
-        whereabouts
       end
     end
   end
@@ -100,19 +96,19 @@ require "pry"
     end
 
     jobs_in_company.each do |job|
-      puts "Position available : #{job.name} at location #{companies_list[job.company_id]}"
+      puts "Position available : #{job.name} at location #{Location.all.find {|location| location.id == job.location_id}.name} with #{companies_list[job.company_id]}"
     end
   end
 
 
 
-  def jobs(loca_id)
+  def location_jobs(loca_id)
     #lists all jobs in a certain location
     jobs_in_location = Job.all.select do |job|
       job.location_id == loca_id
     end
 
     jobs_in_location.each do |job|
-      puts "Position available : #{job.name} at location #{locations_list[job.location_id]}"
+      puts "Position available : #{job.name} at location #{locations_list[job.location_id]} with #{Company.all.find {|company| company.id == job.company_id}.name}"
     end
   end
