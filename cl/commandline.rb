@@ -17,11 +17,24 @@ require "pry"
     puts "Are you ready to find a job?! (y/n)"
     answer = gets.chomp.downcase
     if answer == "y" || answer == "yes"
-      whereabouts
+      puts "1. Location or 2. Company? (1 or 2)"
+      number_answer = gets.chomp
+      if number_answer == 1
+        whereabouts
+      elsif number_answer == 2
+        employer
+      else
+        puts "Choose 1 or 2 next time."
+      end
     else
       puts "Come back later, you bum!"
     end
   end
+
+  def employer
+    nil
+  end
+
 
   def whereabouts
     #Lists the available locations and accepts a number answer (hopefully works for
@@ -54,6 +67,7 @@ require "pry"
     numbered_locations.each do |key, value|
       puts "#{key}: #{value}"
     end
+    puts "Done"
   end
 
 
@@ -75,3 +89,5 @@ require "pry"
 
     end
   end
+
+  def
