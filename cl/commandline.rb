@@ -30,6 +30,7 @@ require "pry"
     puts locations_list
     puts "Please enter the number of the location you would like to work at"
     number = gets.chomp.to_i
+
     locations_list.each do |id, location|
       if id == number
         puts "Looking in #{location}..."
@@ -50,7 +51,9 @@ require "pry"
     Location.all.each do |location|
       numbered_locations[location.id] = location.name
     end
-    numbered_locations
+    numbered_locations.each do |key, value|
+      puts "#{key}: #{value}"
+    end
   end
 
 
