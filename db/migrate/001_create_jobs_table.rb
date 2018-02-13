@@ -1,4 +1,4 @@
-class CreateJobsTable < ActiveRecord::Migration
+class CreateJobsTable < ActiveRecord::Migration[4.2]
 
   def change
     create_table :jobs do |j|
