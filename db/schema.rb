@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 4) do
   create_table "jobs", force: :cascade do |t|
     t.integer "location_id"
     t.integer "company_id"
-    t.string  "name"
+    t.string "name"
   end
 
   create_table "locations", force: :cascade do |t|
