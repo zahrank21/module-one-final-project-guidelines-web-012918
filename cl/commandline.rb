@@ -41,7 +41,7 @@ require "pry"
     companies_list.each do |id, company|
       if id == number
         puts "Looking in #{company}..."
-        jobs(number).each do |job|
+        company_jobs(number).each do |job|
           puts job.name
         end
       elsif number > companies_list.size || number <= 0
@@ -94,16 +94,16 @@ require "pry"
 
   end
 
+  def company_jobs(comp_id)
+    jobs_in_company = Job.all.select do |job|
+      job.company_id == comp_id
+    end
 
-  def company
-    #
-    puts "Is there a specific company you would like to work for..."
-    answer = gets.chomp.downcase
-
-    if answer == "y" || "yes"
-
+    jobs_in_company.each do |job|
+      puts "Position available : #{job.name} at location #{companies_list[job.company_id]}"
     end
   end
+
 
 
   def jobs(loca_id)
