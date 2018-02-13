@@ -32,7 +32,22 @@ require "pry"
   end
 
   def employer
-    nil
+    puts "Here is a list of companies with openings..."
+    puts companies_list
+    puts "Please enter the number of the company you would like to work at"
+    number = gets.chomp.to_i
+
+    companies_list.each do |id, company|
+      if id == number
+        puts "Looking in #{company}..."
+        jobs(number).each do |job|
+          puts job.name
+        end
+      elsif number > locations_list.size || number <= 0
+        puts "Invalid command. Please try again"
+        whereabouts
+      end
+    end
   end
 
 
