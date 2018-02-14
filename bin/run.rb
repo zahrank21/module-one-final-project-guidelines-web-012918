@@ -12,11 +12,14 @@ require_relative '../cl/commandline.rb'
 old_logger = ActiveRecord::Base.logger
 ActiveRecord::Base.logger = nil
 
+# Company.destroy_all
+# Location.destroy_all
+# Job.destroy_all
 
 
-Company.create_table
-Location.create_table
-Job.create_table
+Company.insert_table
+Location.insert_table
+Job.insert_table
 
 
 
@@ -24,7 +27,3 @@ Job.create_table
 
 
 greeting
-
-Company.delete_all
-Location.delete_all
-Job.delete_all

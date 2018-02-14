@@ -47,9 +47,11 @@ require "pry"
         return employer
       end
     end
+    greeting
   end
 
   def companies_list
+    binding.pry
     numbered_companies = {}
 
     Company.all.each do |company|
@@ -70,7 +72,7 @@ require "pry"
     number = gets.chomp.to_i
 
     locations_list.each do |id, location|
-      binding.pry
+
       if id == number
         puts "Looking in #{location}..."
         location_jobs(number)
@@ -79,6 +81,7 @@ require "pry"
         return whereabouts
       end
     end
+    greeting
   end
 
   def locations_list
