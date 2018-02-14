@@ -44,6 +44,7 @@ require "pry"
         company_jobs(number)
       elsif number > companies_list.size || number <= 0 || number.Class != Fixnum
         puts "Invalid command. Please try again"
+        return employer
       end
     end
   end
@@ -74,6 +75,7 @@ require "pry"
         location_jobs(number)
       elsif number > locations_list.size || number <= 0 || number.Class != Fixnum
         puts "Invalid command. Please try again"
+        return whereabouts
       end
     end
   end
