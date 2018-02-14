@@ -17,7 +17,7 @@ require "pry"
     puts "Are you ready to find a job?! (y/n)"
     answer = gets.chomp.downcase
     if answer == "y" || answer == "yes"
-      puts "1. By Location or 2. By Company? (1 or 2) or 3. Find Location with most job openings or 4. Find Company with most job openings"
+      puts "1. By Location or 2. By Company? (1 or 2) or 3. Find Location with most companies or 4. Find Company with most job openings"
       number_answer = gets.chomp.to_i
       if number_answer == 1
         whereabouts
