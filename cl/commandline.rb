@@ -74,6 +74,7 @@ require "pry"
     comp_id = comp_jobs_arr.max_by { |v| freq[v] }
     comp_name = Company.find_by(id: comp_id).name
     puts "#{comp_name} has the most job openings!"
+    greeting
   end
 
   def whereabouts
@@ -124,6 +125,7 @@ require "pry"
     jobs_in_location.each do |job|
       puts "Position available : #{job.name} at location #{locations_list[job.location_id]} with #{Company.all.find {|company| company.id == job.company_id}.name}"
     end
+    greeting
   end
 
   def location_with_most_jobs
@@ -132,6 +134,7 @@ require "pry"
     loca_id = loca_jobs_arr.max_by { |v| freq[v] }
     loca_name = Location.find_by(id: loca_id).name
     puts "#{loca_name} has the most job openings!"
+    greeting
   end
 
   # def locations_with_most_companies
