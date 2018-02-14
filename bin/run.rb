@@ -24,3 +24,5 @@ ActiveRecord::Base.logger = nil
 
 
 greeting
+
+DropOldTables.change
