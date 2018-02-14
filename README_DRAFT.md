@@ -10,4 +10,4 @@ GitHub Jobs Search is an app which helps software developers to find jobs depend
 2. Change your directory to repository location.
 3. Bundle install required files for App to work.
 4. Run program by executing : ruby bin/run.rb
-5. Follow prompts on your terminal carefully to find your future job! 
+5. Follow prompts on your terminal carefully to find your future job!
