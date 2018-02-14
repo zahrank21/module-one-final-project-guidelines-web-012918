@@ -70,6 +70,7 @@ require "pry"
     number = gets.chomp.to_i
 
     locations_list.each do |id, location|
+      binding.pry
       if id == number
         puts "Looking in #{location}..."
         location_jobs(number)
