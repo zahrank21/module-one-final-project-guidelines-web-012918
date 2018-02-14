@@ -13,7 +13,7 @@ dummy_ios_dev = Job.create(name: "dummy_ios_dev")
 dummy_sf = Location.create(name: "dummy_sf")
 dummy_nyc = Location.create(name: "dummy_nyc")
 dummy_seattle = Location.create(name: "dummy_seattle")
->>>>>>> chris
+
 # hotline_bling = Song.create(:name=>'Hotline Bling')
 # thriller = Song.create(:name=>'Thriller')
 #

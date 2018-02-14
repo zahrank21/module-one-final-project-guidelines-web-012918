@@ -34,7 +34,7 @@ require "pry"
 
   def employer
     puts "Here is a list of companies with openings..."
-    puts companies_list
+    puts companies_line_by_line(companies_list)
     puts "Please enter the number of the company you would like to work at"
     number = gets.chomp.to_i
 
@@ -51,15 +51,19 @@ require "pry"
   end
 
   def companies_list
-    binding.pry
     numbered_companies = {}
 
     Company.all.each do |company|
       numbered_companies[company.id] = company.name
     end
-
     numbered_companies
+  end
 
+  def companies_line_by_line(companies_list)
+    companies_list.each do |company|
+      puts "#{company[0]}: #{company[1]}"
+    end
+    return "done"
   end
 
 
@@ -67,7 +71,7 @@ require "pry"
     #Lists the available locations and accepts a number answer (hopefully works for
     #locations that are listed as double digit numbers)
     puts "Here is a list of destinations with openings..."
-    puts locations_list
+    puts locations_line_by_line(locations_list)
     puts "Please enter the number of the location you would like to work at"
     number = gets.chomp.to_i
 
@@ -93,8 +97,16 @@ require "pry"
     end
 
     return numbered_locations
-
   end
+
+  def locations_line_by_line(locations_list)
+    locations_list.each do |location|
+      puts "#{location[0]}: #{location[1]}"
+    end
+    return "done"
+  end
+
+
 
   def company_jobs(comp_id)
     jobs_in_company = Job.all.select do |job|
