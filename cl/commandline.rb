@@ -12,6 +12,24 @@ require "pry"
   #   list_of_functions
   # end
 
+  def locations_with_most_companies
+    #counter_hash counts how many companies are in a location
+    counter_hash = Hash.new(0)
+    Location.all.each do |location|
+      Company.all.each do |company|
+        if location.id == company.location_id
+          counter_hash[location] += 1
+        end
+      end
+    end
+    counter_hash.sort_by{ |k,v| v}
+    counter_hash.each do |location, company_num|
+      puts "Location:#{location} has #{company_num} companies in the area."
+    end
+
+  end
+
+
   def greeting
     #greeting the user, and calling whereabout to find which location they want
     puts "Are you ready to find a job?! (y/n)"
@@ -23,8 +41,12 @@ require "pry"
         whereabouts
       elsif number_answer == 2
         employer
+      elsif number_answer == 3
+        locations_with_most_companies
+      elsif number_answer == 4
+        company_with_most_jobs
       else
-        puts "Choose 1 or 2 next time."
+        puts "Choose 1, 2, 3, or 4 next time."
         greeting
       end
     else
