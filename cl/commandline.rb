@@ -1,17 +1,5 @@
 require "pry"
 
-# class Commandline
-  # def list_of_functions
-  #   puts "Search by location"
-  #   puts "Search by company"
-  #   puts "Search by job title"
-  # end
-  #
-  # def functions
-  #   puts "Here are the search types available to you"
-  #   list_of_functions
-  # end
-
   def greeting
     #greeting the user, and calling whereabout to find which location they want
     puts "Are you ready to find a job?! (y/n)"
@@ -70,6 +58,23 @@ require "pry"
     return "done"
   end
 
+  def company_jobs(comp_id)
+    jobs_in_company = Job.all.select do |job|
+      job.company_id == comp_id
+    end
+
+    jobs_in_company.each do |job|
+      puts "Position available : #{job.name} at location #{Location.all.find {|location| location.id == job.location_id}.name} with #{companies_list[job.company_id]}"
+    end
+  end
+
+  def company_with_most_jobs
+    comp_jobs_arr = Job.all.map { |job| job.company_id  }
+    freq = comp_jobs_arr.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
+    comp_id = comp_jobs_arr.max_by { |v| freq[v] }
+    comp_name = Company.find_by(id: comp_id).name
+    puts "#{comp_name} has the most job openings!"
+  end
 
   def whereabouts
     #Lists the available locations and accepts a number answer (hopefully works for
@@ -110,20 +115,6 @@ require "pry"
     return "done"
   end
 
-
-
-  def company_jobs(comp_id)
-    jobs_in_company = Job.all.select do |job|
-      job.company_id == comp_id
-    end
-
-    jobs_in_company.each do |job|
-      puts "Position available : #{job.name} at location #{Location.all.find {|location| location.id == job.location_id}.name} with #{companies_list[job.company_id]}"
-    end
-  end
-
-
-
   def location_jobs(loca_id)
     #lists all jobs in a certain location
     jobs_in_location = Job.all.select do |job|
@@ -133,14 +124,6 @@ require "pry"
     jobs_in_location.each do |job|
       puts "Position available : #{job.name} at location #{locations_list[job.location_id]} with #{Company.all.find {|company| company.id == job.company_id}.name}"
     end
-  end
-
-  def company_with_most_jobs
-    comp_jobs_arr = Job.all.map { |job| job.company_id  }
-    freq = comp_jobs_arr.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
-    comp_id = comp_jobs_arr.max_by { |v| freq[v] }
-    comp_name = Company.find_by(id: comp_id).name
-    puts "#{comp_name} has the most job openings!"
   end
 
   def location_with_most_jobs
