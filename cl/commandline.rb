@@ -42,7 +42,7 @@ require "pry"
       if id == number
         puts "Looking in #{company}..."
         company_jobs(number)
-      elsif number > companies_list.size || number <= 0
+      elsif number > companies_list.size || number <= 0 || number.Class != Fixnum
         puts "Invalid command. Please try again"
       end
     end
@@ -72,7 +72,7 @@ require "pry"
       if id == number
         puts "Looking in #{location}..."
         location_jobs(number)
-      elsif number > locations_list.size || number <= 0
+      elsif number > locations_list.size || number <= 0 || number.Class != Fixnum
         puts "Invalid command. Please try again"
       end
     end
