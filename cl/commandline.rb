@@ -17,14 +17,14 @@ require "pry"
     puts "Are you ready to find a job?! (y/n)"
     answer = gets.chomp.downcase
     if answer == "y" || answer == "yes"
-      puts "1. By Location or 2. By Company? (1 or 2) or 3. Find Location with most companies or 4. Find Company with most job openings"
+      puts "1. By Location? 2. By Company? 3. Find Location with most jobs. 4. Find Company with most job openings."
       number_answer = gets.chomp.to_i
       if number_answer == 1
         whereabouts
       elsif number_answer == 2
         employer
       elsif number_answer == 3
-        locations_with_most_companies
+        location_with_most_jobs
       elsif number_answer == 4
         company_with_most_jobs
       else
@@ -143,42 +143,48 @@ require "pry"
     puts "#{comp_name} has the most job openings!"
   end
 
-  def locations_with_most_companies
-    #counter_hash counts how many companies are in a location
-    # counter_hash = Hash.new(0)
-    # Location.all.each do |location|
-    #   Company.all.each do |company|
-    #     binding.pry
-    #     if location.id == company.location_id
-    #       counter_hash[location] += 1
-    #     end
-    #   end
-    # end
-    # counter_hash.sort_by{ |k,v| v}
-    # counter_hash.each do |location, company_num|
-    #   puts "Location:#{location} has #{company_num} companies in the area."
-    # end
-
-    #locations with most jobs
-    # location_jobs_arr = Job.all.map { |job| job.location_id  }
-    # freq = location_jobs_arr.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
-    # loc_id = location_jobs_arr.max_by { |v| freq[v] }
-    # loc_name = Location.find_by(id: loc_id).name
-    # # binding.pry
-    # puts "#{loc_name} has the most job openings. It has #{freq[loc_id]} openings."
-    binding.pry
-    # locations with most companies
-    counter_hash = Hash.new(0)
-    Location.all.each do |location|
-      Job.all.each do |job|
-        binding.pry
-        if location.id == job.location_id
-          counter_hash[location.id] += 1
-        end
-      end
-    end
-    counter_hash.sort_by{ |k,v| v}
-    counter_hash.each do |location, company_num|
-      puts "Location:#{location} has #{company_num} companies in the area."
-    end
+  def location_with_most_jobs
+    loca_jobs_arr = Job.all.map { |job| job.location_id  }
+    freq = loca_jobs_arr.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
+    loca_id = loca_jobs_arr.max_by { |v| freq[v] }
+    loca_name = Location.find_by(id: loca_id).name
+    puts "#{loca_name} has the most job openings!"
   end
+
+  # def locations_with_most_companies
+  #   #counter_hash counts how many companies are in a location
+  #   # counter_hash = Hash.new(0)
+  #   # Location.all.each do |location|
+  #   #   Company.all.each do |company|
+  #   #     binding.pry
+  #   #     if location.id == company.location_id
+  #   #       counter_hash[location] += 1
+  #   #     end
+  #   #   end
+  #   # end
+  #   # counter_hash.sort_by{ |k,v| v}
+  #   # counter_hash.each do |location, company_num|
+  #   #   puts "Location:#{location} has #{company_num} companies in the area."
+  #   # end
+  #
+  #   #locations with most jobs
+  #   # location_jobs_arr = Job.all.map { |job| job.location_id  }
+  #   # freq = location_jobs_arr.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
+  #   # loc_id = location_jobs_arr.max_by { |v| freq[v] }
+  #   # loc_name = Location.find_by(id: loc_id).name
+  #   # # binding.pry
+  #   # puts "#{loc_name} has the most job openings. It has #{freq[loc_id]} openings."
+  #   # locations with most companies
+  #   counter_hash = Hash.new(0)
+  #   Location.all.each do |location|
+  #     Job.all.each do |job|
+  #       if location.id == job.location_id
+  #         counter_hash[location.id] += 1
+  #       end
+  #     end
+  #   end
+  #   counter_hash.sort_by{ |k,v| v}
+  #   counter_hash.each do |location, company_num|
+  #     puts "Location:#{location} has #{company_num} companies in the area."
+  #   end
+  # end
