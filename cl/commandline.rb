@@ -140,9 +140,7 @@ require "pry"
 
   def locations_with_most_companies
     binding.pry
-  end
 
-  # def locations_with_most_companies
   #   #counter_hash counts how many companies are in a location
   #   # counter_hash = Hash.new(0)
   #   # Location.all.each do |location|
@@ -178,4 +176,4 @@ require "pry"
   #   counter_hash.each do |location, company_num|
   #     puts "Location:#{location} has #{company_num} companies in the area."
   #   end
-  # end
+  end
