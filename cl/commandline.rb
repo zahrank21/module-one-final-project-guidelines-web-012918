@@ -66,6 +66,7 @@ require "pry"
 
     jobs_in_company.each do |job|
       puts "Position available : #{job.name} at location #{Location.all.find {|location| location.id == job.location_id}.name} with #{companies_list[job.company_id]}"
+      puts "Description: #{job.description[0..140]}"
     end
   end
 
@@ -125,6 +126,7 @@ require "pry"
 
     jobs_in_location.each do |job|
       puts "Position available : #{job.name} at location #{locations_list[job.location_id]} with #{Company.all.find {|company| company.id == job.company_id}.name}"
+      puts "Description: #{job.description[0..140]}"
     end
     greeting
   end
@@ -179,3 +181,6 @@ require "pry"
   #     puts "Location:#{location} has #{company_num} companies in the area."
   #   end
   # end
+  def delete_stupid_words
+
+  end

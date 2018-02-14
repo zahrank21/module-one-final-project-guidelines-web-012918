@@ -17,9 +17,9 @@ ActiveRecord::Base.logger = nil
 # Job.destroy_all
 
 
-Company.insert_table
-Location.insert_table
-Job.insert_table
+# Company.insert_table
+# Location.insert_table
+# Job.insert_table
 
 
 greeting
