@@ -17,7 +17,7 @@ require "pry"
     puts "Are you ready to find a job?! (y/n)"
     answer = gets.chomp.downcase
     if answer == "y" || answer == "yes"
-      puts "1. Location or 2. Company? (1 or 2)"
+      puts "1. By Location or 2. By Company? (1 or 2) or 3. Find Location with most job openings or 4. Find Company with most job openings"
       number_answer = gets.chomp.to_i
       if number_answer == 1
         whereabouts
@@ -117,4 +117,11 @@ require "pry"
     jobs_in_location.each do |job|
       puts "Position available : #{job.name} at location #{locations_list[job.location_id]} with #{Company.all.find {|company| company.id == job.company_id}.name}"
     end
+  end
+
+  def company_with_most_jobs
+    comp_jobs_arr = Job.all.map { |job| job.company_id  }
+    freq = comp_jobs_arr.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
+    comp_id = comp_jobs_arr.max_by { |v| freq[v] }
+    Company.find_by(id: comp_id).name
   end
