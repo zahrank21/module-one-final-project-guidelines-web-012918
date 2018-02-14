@@ -69,8 +69,13 @@ require "pry"
       puts
       puts "Company: #{companies_list[job.company_id]}"
       puts "Location: #{Location.all.find {|location| location.id == job.location_id}.name}"
+
       puts "Apply: #{job.how_to_apply}"
       puts "#{delete_stupid_words(job.description)[0..140]}..."
+
+      puts "Apply: #{getting_url(job.how_to_apply)}"
+      puts "#{delete_stupid_words(job.description)[0..140]}"
+
       puts
       puts "_______________________________________________________________________________"
     end
@@ -135,8 +140,13 @@ require "pry"
       puts
       puts "Company: #{companies_list[job.company_id]}"
       puts "Location: #{Location.all.find {|location| location.id == job.location_id}.name}"
+
       puts "Apply: #{job.how_to_apply}"
       puts "#{delete_stupid_words(job.description)[0..140]}..."
+
+      puts "Apply: #{getting_url(job.how_to_apply)}"
+      puts "#{delete_stupid_words(job.description)[0..140]}"
+
       puts
       puts "_______________________________________________________________________________"
     end
@@ -200,4 +210,10 @@ require "pry"
     modified_string = string.delete("strong")
     modified_string = string.delete("<p><>")
     modified_string = string.delete("!</></p>")
+  end
+
+  def getting_url(url)
+    new_url = url.slice(url.index('"')...(url.index("<")))
+    new_url
+    binding.pry
   end
