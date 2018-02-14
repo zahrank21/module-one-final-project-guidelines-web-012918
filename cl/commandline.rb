@@ -157,5 +157,6 @@ require "pry"
     comp_jobs_arr = Job.all.map { |job| job.company_id  }
     freq = comp_jobs_arr.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
     comp_id = comp_jobs_arr.max_by { |v| freq[v] }
-    Company.find_by(id: comp_id).name
+    comp_name = Company.find_by(id: comp_id).name
+    puts comp_name
   end

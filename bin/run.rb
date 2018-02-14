@@ -21,7 +21,6 @@ Company.insert_table
 Location.insert_table
 Job.insert_table
 
-binding.pry
 
 "hi"
 
