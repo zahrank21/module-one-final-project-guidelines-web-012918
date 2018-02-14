@@ -22,7 +22,4 @@ Location.insert_table
 Job.insert_table
 
 
-"hi"
-
-
 greeting

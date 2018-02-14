@@ -21,6 +21,7 @@ require "pry"
       end
     else
       puts "Come back later, you bum!"
+      return "Come back later, you bum!"
     end
   end
 
@@ -135,6 +136,10 @@ require "pry"
     loca_name = Location.find_by(id: loca_id).name
     puts "#{loca_name} has the most job openings!"
     greeting
+  end
+
+  def locations_with_most_companies
+    binding.pry
   end
 
   # def locations_with_most_companies
