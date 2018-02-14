@@ -1,5 +1,9 @@
-class DropOldTables
-  def self.change
+class CreateTable < ActiveRecord::Migration[4.2]
+  def self.up
+
+  end
+
+  def self.down
     drop_table :companies do |t|
       t.string :name
     end
