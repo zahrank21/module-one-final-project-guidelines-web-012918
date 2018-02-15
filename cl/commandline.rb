@@ -70,10 +70,9 @@ require "pry"
       puts "Company: #{companies_list[job.company_id]}"
       puts "Location: #{Location.all.find {|location| location.id == job.location_id}.name}"
 
-
-      puts "#{job.description[0..250]}..."
+      puts "#{job.description[0..250].gsub!(/(<[^>]*>)|\n|\t/s) {" "}}..."
       puts
-      puts "Apply: #{job.how_to_apply}"
+      puts "Apply: #{job.how_to_apply.gsub!(/(<[^>]*>)|\n|\t/s) {" "}}"
 
 
       puts
@@ -142,9 +141,9 @@ require "pry"
       puts "Location: #{Location.all.find {|location| location.id == job.location_id}.name}"
 
 
-      puts "#{job.description[0..250]}..."
+      puts "#{job.description[0..250].gsub!(/(<[^>]*>)|\n|\t/s) {" "}}..."
       puts
-      puts "Apply: #{job.how_to_apply}"
+      puts "Apply: #{job.how_to_apply.gsub!(/(<[^>]*>)|\n|\t/s) {" "}}"
 
 
       puts

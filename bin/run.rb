@@ -16,9 +16,9 @@ ActiveRecord::Base.logger = nil
 # Job.destroy_all
 
 puts "Please wait: Thank you for your patience..."
-Company.insert_table
-Location.insert_table
-Job.insert_table
+# Company.insert_table
+# Location.insert_table
+# Job.insert_table
 
 # binding.pry
 
