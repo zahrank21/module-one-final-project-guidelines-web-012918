@@ -70,11 +70,11 @@ require "pry"
       puts "Company: #{companies_list[job.company_id]}"
       puts "Location: #{Location.all.find {|location| location.id == job.location_id}.name}"
 
-      puts "Apply: #{job.how_to_apply}"
-      puts "#{delete_stupid_words(job.description)[0..140]}..."
 
-      puts "Apply: #{getting_url(job.how_to_apply)}"
-      puts "#{delete_stupid_words(job.description)[0..140]}"
+      puts "#{job.description[0..250]}..."
+      puts
+      puts "Apply: #{job.how_to_apply}"
+
 
       puts
       puts "_______________________________________________________________________________"
@@ -141,11 +141,11 @@ require "pry"
       puts "Company: #{companies_list[job.company_id]}"
       puts "Location: #{Location.all.find {|location| location.id == job.location_id}.name}"
 
-      puts "Apply: #{job.how_to_apply}"
-      puts "#{delete_stupid_words(job.description)[0..140]}..."
 
-      puts "Apply: #{getting_url(job.how_to_apply)}"
-      puts "#{delete_stupid_words(job.description)[0..140]}"
+      puts "#{job.description[0..250]}..."
+      puts
+      puts "Apply: #{job.how_to_apply}"
+
 
       puts
       puts "_______________________________________________________________________________"
