@@ -5,7 +5,7 @@ require "pry"
     puts "Are you ready to find a job?! (y/n)"
     answer = gets.chomp.downcase
     if answer == "y" || answer == "yes"
-      puts "1. By Location? 2. By Company? 3. Find Location with most jobs. 4. Find Company with most job openings."
+      puts "1. By Location? 2. By Company? 3. Find Location with most jobs. 4. Find Company with most job openings. 5. Find Location with most Companies "
       number_answer = gets.chomp.to_i
       if number_answer == 1
         whereabouts
@@ -15,6 +15,8 @@ require "pry"
         location_with_most_jobs
       elsif number_answer == 4
         company_with_most_jobs
+      elsif number_answer == 5
+        locations_with_most_companies
       else
         puts "Choose 1, 2, 3, or 4 next time."
         greeting
@@ -153,6 +155,7 @@ require "pry"
   end
 
   def location_with_most_jobs
+    binding.pry
     loca_jobs_arr = Job.all.map { |job| job.location_id  }
     freq = loca_jobs_arr.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
     loca_id = loca_jobs_arr.max_by { |v| freq[v] }
@@ -162,7 +165,27 @@ require "pry"
   end
 
   def locations_with_most_companies
+    results_hash = {}
+    Location.all.each do |loca|
+      results_hash[loca] = loca.companies.uniq.count
+    end
+    results_hash = results_hash.sort_by do |location, comp_num|
+      comp_num
+    end.last
     binding.pry
+    puts "#{results_hash.first.name} has the most companies with #{results_hash.last}."
+  end
+
+  def companies_with_most_locations
+    results_hash = {}
+    Company.all.each do |comp|
+      results_hash[comp] = comp.locations.uniq.count
+    end
+    results_hash = results_hash.sort_by do |company,loc_num|
+      loc_num
+    end.last
+    binding.pry
+    puts "#{results_hash.first.name} has the most locations with #{results_hash.last}."
   end
 
   #   #counter_hash counts how many companies are in a location

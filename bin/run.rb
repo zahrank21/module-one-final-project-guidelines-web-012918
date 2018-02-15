@@ -20,6 +20,6 @@ puts "Please wait: Thank you for your patience..."
 # Location.insert_table
 # Job.insert_table
 
-# binding.pry
+binding.pry
 
 greeting
