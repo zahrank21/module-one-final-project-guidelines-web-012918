@@ -86,7 +86,7 @@ require "pry"
     comp_id = comp_jobs_arr.max_by { |v| freq[v] }
     comp_name = Company.find_by(id: comp_id).name
     puts "#{comp_name} has the most job openings!"
-    greeting
+    # greeting
   end
 
   def whereabouts
