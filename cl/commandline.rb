@@ -215,5 +215,4 @@ require "pry"
   def getting_url(url)
     new_url = url.slice(url.index('"')...(url.index("<")))
     new_url
-    binding.pry
   end
